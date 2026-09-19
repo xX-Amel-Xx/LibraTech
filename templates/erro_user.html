@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img class= "img-erro" src="/static/img/erro.png">
+    <h4>Tem certeza de que deseja excluir este empréstimo?</h4>
+    {% for item in emprestimo%}
+    <p>{{item.leitor.nome}}</p>
+    <a href="/deletar_emprestimo/{{item.id}}" class="btn-excluir">
+    <img class="icon-excluir" src="/static/img/BtnExcluir.png" >
+</a>
+{% endfor %}
+</body>
+</html>

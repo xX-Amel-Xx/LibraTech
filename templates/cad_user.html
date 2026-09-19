@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cad_user.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastrar usuário</h1>
+    <div class="campo cadastro"> 
+
+<h5>nome</h5>
+<form action="/registrar_leitor"method="POST">
+    <input 
+    type="text"
+    name="nome"
+    placeholder="Cadastrar novos livros">
+
+    <h5>email</h5>
+    <input 
+    type="email"
+    name="email"
+    placeholder="Digite o nome do autor">
+
+    <h5>telefone</h5>
+    <input 
+    type="number"
+    name="telefone"
+    placeholder="Digite a editora">
+
+     <h5>Data do cadastro</h5>
+    <input 
+    type="date"
+    name="data_cadastro"
+    placeholder="Digite a data de cadastro">
+
+<button class="bt1" type="submit">
+    Adicionar usuário
+</button>
+</form>
+
+<div class="Informacoes">
+{% for registro in registros%}
+
+<div class="itens">   
+<p>{{registro.nome}}</p>
+<p>{{registro.email}}</p>
+<p>{{registro.telefone}}</p>
+<p>{{registro.data_cadastro}}</p>
+
+<a href="/deletar_user/{{registro.id}}" class="btn-excluir">
+    <img class="icon-excluir" src="/static/img/BtnExcluir.png" >
+</a>
+{% endfor %}
+{% if erro3 %}
+    <p class="erro3">{{erro3}}</p>
+{% endif %}
+{% if erro_data %}
+    <p class="erro_data">{{ erro_data}}</p>
+{% endif %}
+
+{% if erro_data2 %}
+    <p class="erro_data">{{ erro_data2}}</p>
+{% endif %}
+</body>
+</html>

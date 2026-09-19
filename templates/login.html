@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+
+    
+    <div class="cartão">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='nome') }}" alt="Logo LibraTech" class="logo-img">
+    </div>
+
+    <h3 class="faca_login"> Faça login para acessar o sistema </h3>
+    <form class="login-form" method="POST" action="/login">
+    <div class="input_email">
+        <input type="email" name="email" required placeholder="Usuario">
+    </div>
+
+    <div class="input_senha">
+        <input type="password" name="senha" required placeholder="Senha">
+    </div>
+    
+      {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensagem in mensagens %}
+            <p class="{{ categoria }}">{{ mensagem }}</p>
+        {% endfor %}
+    {% endwith %}
+    <button type="submit" class="btn-login">Login</button>
+    </form>
+    </div>
+<a href="{{ url_for('recuperar_senha') }}" class="link-esqueceu">Esqueceu a senha?</a>
+
+<div class="divisoria"></div>
+<div class="cadastro-footer">
+    <span> Não possui uma conta?</span>
+    <a href="{{ url_for('tela_cadastrar') }}" class="link-cadastro">Cadastre-se</a>
+</div>
+</body>
+</html>

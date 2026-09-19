@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+<a href="/inicial" class="botao-voltar2">
+    <button class="btn-voltar">
+    <i class="bi bi-arrow-left-square-fill"></i>
+</button>
+</a>
+    <h1>Devolver Livros</h1>
+    <h5> selecione o emprestimo para a devolução do livro</h5>
+<h3>Emprestimos ativos</h3>
+ <h5> livros que ainda não foram devolvidos</h5>
+
+<div class="info_não_devolvidos">
+{% for emprestimo in emprestimos %}
+
+<div class="itens">
+<p>{{emprestimo.leitor.nome}}</p>
+<p>{{emprestimo.livro.titulo}}</p>
+<p>Data empréstimo: {{ emprestimo.data_emprestimo }}</p>
+<p>Data prevista: {{ emprestimo.data_prevista }}</p>
+</div>
+<div>
+<p>{{ emprestimo.status }}</p>
+</div>
+    <a href="/devolver/{{ emprestimo.id }}">
+                <button class="bt1" type="button">
+                    Devolver livro
+                </button>
+            </a>
+
+        </div>
+{% endfor %}
+</body>
+</html>

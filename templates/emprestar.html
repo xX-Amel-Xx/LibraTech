@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div>
+<a href="/inicial" class="botao-voltar2">
+    <button class="btn-voltar">
+    <i class="bi bi-arrow-left-square-fill"></i>
+</button>
+</a>
+  </div>
+  
+    <div class="emprestar_livros">
+        <h1>Emprestar Livros</h1>
+        <h4>Registre um novo empréstimo de livro para um usuário.</h4>
+    </div>
+
+<div class="Card_novo_emprestimo">
+    <div class="Novo_emprestimo">
+        <h3>Novo empréstimo</h3>
+    <h5>Preencha os dados abaixo para realizar o empréstimo.</h5>
+</div>
+
+<div class="usuario">
+<form action="/novo_emprestimo"method="POST">
+
+<div>
+<h5>Usuario</h5>
+    <select name="leitor_id" id="usuario">
+    <option value="" selected disabled>Selecione o usuário</option>
+     {% for usuario in usuarios%}
+    <option value={{usuario.id}}>{{usuario.nome}}</option>
+    {% endfor %}
+    </select>
+</div>
+
+<div>
+<h5>Livro</h5>
+<select name="livro_id" id="livros">
+<option value=""selected disabled>Selecione o Livro</option>
+{% for livro in livros%}
+<option value={{livro.id}}>{{livro.titulo}}</option>
+{% endfor %}
+</select>
+</div>
+
+<div>
+<h5> Data emprestimo</h5>
+<input type="date"
+name="data_emprestimo">
+</div>
+
+<div>
+   <h5> Data prevista</h5>
+<input type="date"
+name="data_prevista"> 
+</div>
+<div>
+<button type="submit">
+    Registrar empréstimo
+</button>
+</div>
+</form>
+
+{% if erro_registros %}
+    <p class="erro_registros">{{erro_registros}}</p>
+{% endif %}
+
+{% if erro_data %}
+    <p class="erro_data">{{ erro_data }}</p>
+{% endif %}
+
+{% if erro_data_emprestimo %}
+    <p class="erro_data_emprestimo">{{erro_data_emprestimo }}</p>
+{% endif %}
+
+{% if erro_data_prevista %}
+    <p class="erro_data_prevista">{{erro_data_prevista}}</p>
+{% endif %}
+
+<div>
+<a href="/cad_user">
+    <button class="btn-cad-user" type="submit">
+    Registrar Usuario
+</button>
+</a>
+</div>
+
+<div class="info_emprestimo">
+{% for emprestimo in emprestimos %}
+<div class="itens">
+<p>{{emprestimo.leitor.nome}}</p>
+<p>{{emprestimo.livro.titulo}}</p>
+<p>Data empréstimo: {{ emprestimo.data_emprestimo }}</p>
+<p>Data prevista: {{ emprestimo.data_prevista }}</p>
+</div>
+<a href="/deletar_emprestimo/{{emprestimo.id}}" class="btn-excluir">
+    <img class="icon-excluir" src="/static/img/BtnExcluir.png" >
+</a>
+{% endfor %}
+
+
+</div>
+</div>
+
+</body>
+</html>

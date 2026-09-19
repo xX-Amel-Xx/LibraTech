@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraTech cadastro</title>
+</head>
+<body>
+    <div>
+     <h3 class="cadastrar">Cadastre-se</h3>
+
+     <form class="cadastro-form" method="POST" action="/tela_cadastrar">
+    <div class="input_nome">
+        <input type="text" name="nome" required placeholder="Nome completo">
+    </div>
+    
+    <div class="input_email">
+        <input type="email" name="email" required placeholder="E-mail">
+    </div>
+    <div class="input_senha">
+        <input type="password" name="senha" required placeholder="Senha">
+    </div>
+
+       <div class="input_senha_confirmar">
+        <input type="password" name="confirmar_senha" required placeholder="Confirmar senha">
+    </div>
+    
+      <div class="input_telefone">
+        <input type="number" name="telefone" required placeholder="Telefone">
+    </div>
+    <button type="submit" class="btn-cadastro">Cadastrar</button>
+     </form>
+     <div class="cadastro-voltar">
+            <a href="{{ url_for('login') }}" class="btn-voltar">
+                Voltar para o login
+            </a>
+    </div>
+
+</body>
+</html>

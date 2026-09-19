@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+        <a href="/inicial" class="botao-voltar2">
+            <button class="btn-voltar" type="button">
+                <i class="bi bi-arrow-left-square-fill"></i>
+            </button>
+        </a>
+
+    </div>
+<div></div>
+<h1>Histórico de emprestimos</h1>
+
+    <h5>Consulte todos os emprestimos realizados</h5>
+
+    <form action="/historico" method="POST">
+     <input
+     type="text"
+     name="pesquisa"
+     placeholder="Pesquisar por Livro,usuário,categoria...">
+
+          <!--Status -->
+<div></div>
+ <h5>Status</h5>
+
+<select name="status" id="status">
+    <option value="">Todos os status</option>
+     <option value="Devolvido">Devolvido</option>
+    <option value="Atrasado">Atrasado</option>
+    <option value="Em aberto">Em aberto</option>
+</select>
+<button type="submit">Pesquisar</button>
+  </form>
+  <div>
+    {% for emprestimo in emprestimos %}
+    <p>
+        {{ emprestimo.leitor.nome }}
+        
+        {{ emprestimo.livro.titulo }}
+        
+        {{ emprestimo.status }}
+        {{ emprestimo.data_emprestimo}}
+        {{ emprestimo.data_prevista}}
+
+        <p>
+    Data de devolução:
+
+    {% if emprestimo.data_devolucao %}
+        {{ emprestimo.data_devolucao }}
+    {% else %}
+        Emprestado
+    {% endif %}
+    
+</p>
+      {% else %}
+    <p>Não há empréstimos atrasados ou devolvidos</p>
+    </p>
+
+{% endfor %}
+  </div>
+</body>
+</html>

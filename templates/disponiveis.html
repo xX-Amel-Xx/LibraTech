@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros disponíveis</title>
+</head>
+
+<body>
+
+    <div>
+
+        <a href="/inicial" class="botao-voltar2">
+            <button class="btn-voltar" type="button">
+                <i class="bi bi-arrow-left-square-fill"></i>
+            </button>
+        </a>
+
+    </div>
+
+    <h1>Livros disponíveis</h1>
+
+    <h5>Confira os livros disponíveis</h5>
+
+
+    <!-- FORMULÁRIO DE FILTRO -->
+
+    <form action="/li_disponiveis" method="POST">
+
+        <h5>Pesquisar por título, autor ou editora</h5>
+
+        <input
+            type="text"
+            name="pesquisa"
+            placeholder="Digite o título, autor ou editora"
+        >
+
+
+        <h5>Categoria</h5>
+
+        <select name="categoria_id" id="categoria">
+
+            <option value="">Todas as categorias</option>
+
+            {% for categoria in categorias %}
+
+                <option value="{{ categoria.id }}">
+                    {{ categoria.nome}}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <h5>Autor</h5>
+
+        <select name="autor" id="autor">
+
+            <option value="">Todos os autores</option>
+
+            {% for autores in autor_livro %}
+
+                <option value="{{ autores.autor }}">
+                    {{ autores.autor }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <h5>Editora</h5>
+
+        <select name="editora" id="editora">
+
+            <option value="">Todas as editoras</option>
+
+            {% for editoras in editora_livro %}
+
+                <option value="{{ editoras.editora }}">
+                    {{ editoras.editora }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <button type="submit">
+            Filtrar
+        </button>
+
+    </form>
+
+
+    <!-- LIVROS -->
+
+    <div class="Informacoes">
+
+        {% for livro in livros %}
+
+            <div class="livro">
+
+                <h3>{{ livro.titulo }}</h3>
+
+                <p>Autor: {{ livro.autor }}</p>
+
+                <p>Categoria: {{ livro.categoria.nome }}</p>
+
+                <p>Editora: {{ livro.editora }}</p>
+
+                <p>Disponível</p>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

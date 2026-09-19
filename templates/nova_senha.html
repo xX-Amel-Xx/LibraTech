@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova senha - LibraTech</title>
+</head>
+
+<body>
+
+    <h3>Redefinir senha</h3>
+
+    <form method="POST" action="/nova_senha">
+
+        <input
+            type="password"
+            name="nova_senha"
+            required
+            placeholder="Nova senha"
+        >
+
+        <input
+            type="password"
+            name="confirmar_senha"
+            required
+            placeholder="Confirmar nova senha"
+        >
+
+        <input
+            type="hidden"
+            name="usuario_id"
+            value="{{ usuario_id }}"
+        >
+
+        <button type="submit">
+            Alterar senha
+        </button>
+
+    </form>
+
+</body>
+
+</html>

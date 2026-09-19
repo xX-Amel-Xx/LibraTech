@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="body">
+</div>
+
+<div class="cabeçalho">
+<div class="Bib">
+<img class= "img_livro" src="/static/img/livro.png">
+<h4 class="biblioteca">Biblioteca</h4>
+</div>
+
+<div class="use">
+<img class= "img-user" src="/static/img/usuario.png">
+<div class="usuario">
+    <span>Olá,</span>
+    <span>{{ session['usuario_nome'] }}</span>
+    
+     <a href="{{ url_for('logout') }}">
+        Sair
+    </a>
+</div>
+</div>
+</div>
+
+<div class="imgs">
+<img class= "img_prateleira" src="/static/img/prateleira.png">
+<img class= "img_livros" src="/static/img/livros.png">
+</div>
+<div class="icones-1">
+
+<a href="/cadastrar">
+<div class="card-1">
+<img class= "icon1" src="/static/img/icon-1.png">
+<h5 class="cad_livros">Cadastrar livros</h5>
+</div>
+</a>
+
+<a href="/emprestar">
+<div class="card-2">
+<img class= "icon2" src="/static/img/icon-2.png">
+<h5 class="emp_livros">Emprestar livros</h5>
+</div>
+</a>
+
+<a href="/devolver">
+<div class="card-3">
+<img class= "icon3" src="/static/img/icon-3.png">
+<h5 class="dev_livros">Devolver livros</h5>
+</div>
+</a>
+</div>
+
+<a href="/li_disponiveis">
+<div class="icones-2">
+<div class="card-4">
+<img class= "icon4" src="/static/img/icon-4.png">
+<h5 class="disp_livros">livros 
+    disponíveis</h5>
+</div>
+</a>
+<a href="/historico">
+<div class="card-5">
+<img class= "icon5" src="/static/img/icon-5.png">
+<h5 class="hist"> Ver histórico </h5>
+</div>
+</a>
+</div>
+</body>
+</html>
+
