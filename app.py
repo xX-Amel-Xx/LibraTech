@@ -511,25 +511,28 @@ def nova_senha():
         nova_senha = request.form.get('nova_senha')
         confirmar_senha = request.form.get('confirmar_senha')
 
+        print("ID:", usuario_id)
+        print("NOVA SENHA:", nova_senha)
+        print("CONFIRMAÇÃO:", confirmar_senha)
+
         if nova_senha != confirmar_senha:
-
             flash("As senhas não coincidem", "erro")
-
             return render_template(
                 "nova_senha.html",
                 usuario_id=usuario_id
             )
 
-        usuario = Usuario.query.get(usuario_id)
+        usuario = db.session.get(Usuario, usuario_id)
+
+        print("USUÁRIO:", usuario)
 
         if usuario:
-
             usuario.senha = nova_senha
-
             db.session.commit()
 
-            flash("Senha alterada com sucesso!", "sucesso")
+            print("SENHA ALTERADA!")
 
+            flash("Senha alterada com sucesso!", "sucesso")
             return redirect(url_for("login"))
 
     return render_template("nova_senha.html")

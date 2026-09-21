@@ -4,31 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>LibraTech recuperar senha</title>
+    <title>Recuperar senha - LibraTech</title>
 </head>
 
 <body>
 
-    <div class="card-aviso">
+    <h3>Recuperar senha</h3>
 
-        <p class="texto-principal">
-            Enviamos um link de redefinição de senha para o e-mail cadastrado.
-        </p>
+    <p>Digite o e-mail cadastrado para continuar.</p>
 
-        <div class="botoes-grupo">
+    <form method="POST" action="/recuperar_senha">
 
-            <button type="button" class="btn-action btn-reenviar">
-                Reenviar link
-            </button>
+        <input
+            type="email"
+            name="email"
+            required
+            placeholder="E-mail"
+        >
 
-            <a href="{{ url_for('login') }}" class="btn-action btn-voltar-login">
-                Voltar para tela de login
-            </a>
+        <button type="submit">
+            Continuar
+        </button>
 
-        </div>
+    </form>
 
-    </div>
+    {% if erro %}
+        <p>{{ erro }}</p>
+    {% endif %}
+
+    <a href="{{ url_for('login') }}">
+        Voltar para o login
+    </a>
 
 </body>
 

@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F4E4D3;
+
+    background-image:
+        url("../img/prateleira.png"),
+        url("../img/livros.png");
+
+    background-repeat: no-repeat, no-repeat;
+
+      background-position:
+        left 50px,
+        right 70px;
+
+    background-size:
+        180px,
+        180px;
+}
+
+.img_livro {
+    width: 20px;
+}
+a {
+    text-decoration: none;
+}

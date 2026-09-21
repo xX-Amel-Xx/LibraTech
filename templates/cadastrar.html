@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <link rel="stylesheet" href="{{ url_for('static', filename='cadastrar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastrar.css') }}">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
-<body class="body">
-<div>
-<a href="/inicial" class="botao-voltar2">
-    <button class="btn-voltar">
-    <i class="bi bi-arrow-left-square-fill"></i>
-</button>
-</a>
- </div>
+<body >
+
+<div class="topo">
+<div class="Bib">
+<img class= "img_livro" src="/static/img/livro.png">
+<h4 class="biblioteca">LibraTech</h4>
+</div>
+</div>
+    <!-- BOTÃO VOLTAR -->
+    <div>
+        <a href="/inicial" class="botao-voltar2">
+            <button class="btn-voltar" type="button">
+                <i class="bi bi-arrow-left-square-fill"></i>
+                Voltar
+            </button>
+        </a>
+    </div>
+<div class="img-livro-cadastro">
+    <img class= "livro-cadastro" src="/static/img/icon-1.png">
+</div>
     <div class="cabeçalho">
 <h1> Cadastrar Livros</h1>
 </div>
@@ -52,6 +65,14 @@
     <option value="3">Terror</option>
     <option value="4">Ficção Científica</option>
     </select>
+    
+{% if erro %}
+    <p class="erro">{{ erro }}</p>
+{% endif %}
+{% if erro2 %}
+    <p class="erro2">{{ erro2 }}</p>
+{% endif %}
+
 <button class="bt1" type="submit">
     Adicionar
 </button>
@@ -61,24 +82,43 @@
 <div class="Informacoes">
 {% for registro in registros%}
 
-<div class="itens">   
-<p>{{registro.titulo}}</p>
-<p>{{registro.autor}}</p>
-<p>{{registro.editora}}</p>
-<p>{{registro.ano_publicacao}}</p>
-<p>{{registro.categoria.nome}}</p>
-<a href="/deletar/{{registro.id}}" class="btn-excluir">
-    <img class="icon-excluir" src="/static/img/BtnExcluir.png" >
-</a>
+<div class="itens">
+
+    <!-- Ícone do livro -->
+    <img class="livro" src="/static/img/icon-1.png">
+
+    <!-- Título e autor -->
+    <div class="info-livro">
+        <p class="titulo">{{ registro.titulo }}</p>
+        <p class="autor">{{ registro.autor }}</p>
+    </div>
+
+    <!-- Editora -->
+    <div class="info-item">
+        <img class="editora" src="/static/img/banco.png">
+        <p>{{ registro.editora }}</p>
+    </div>
+
+    <!-- Ano -->
+    <div class="info-item">
+        <img class="ano_pub" src="/static/img/calendario (1).png">
+        <p>{{ registro.ano_publicacao }}</p>
+    </div>
+
+    <!-- Categoria -->
+    <div class="info-item">
+        <img class="etiqueta" src="/static/img/etiqueta-de-preco.png">
+        <p>{{ registro.categoria.nome }}</p>
+    </div>
+
+    <!-- Excluir -->
+    <a href="/deletar/{{ registro.id }}" class="btn-excluir">
+        <img class="icon-excluir" src="/static/img/BtnExcluir.png">
+    </a>
 
 </div>
+
 {% endfor %}
-{% if erro %}
-    <p class="erro">{{ erro }}</p>
-{% endif %}
-{% if erro2 %}
-    <p class="erro2">{{ erro2 }}</p>
-{% endif %}
 
 </div>
 </form>

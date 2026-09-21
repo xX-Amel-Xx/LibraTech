@@ -1,0 +1,178 @@
+/* =========================
+   ESTILOS GERAIS & RESET
+   ========================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Georgia", serif;
+    background-color: #f7f3ed;
+}
+
+/* Remove sublinhado padrão dos links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+/* =========================
+   LOGO
+   ========================= */
+ .img-logo {
+    display: flex;
+    justify-content: center; /* Centraliza a imagem na horizontal */
+    align-items: center;    /* Centraliza na vertical (se o container tiver altura) */
+    width: 100%; 
+    margin-top: 20px;           /* Garante que o container ocupe a largura total */
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+.cabeçalho {
+    background-color: #423224;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 24px;
+}
+
+.Bib {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img_livro {
+    width: 30px;
+}
+
+.biblioteca {
+    color: #F2E7DC;
+    margin: 0;
+    font-family: "Georgia", serif;
+    font-weight: 80;
+    font-size: 1rem;
+}
+
+/* ÁREA DO USUÁRIO */
+.use {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img-user {
+    width: 24px;
+}
+
+.usuario {
+    color: #F2E7DC;
+    font-family: "Georgia", serif;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.usuario a {
+    color: #dfbfa3;
+    margin-left: 8px;
+    text-decoration: underline;
+}
+
+/* =========================
+   TÍTULO PRINCIPAL (CENTRALIZADO)
+   ========================= */
+.title-biblio {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.title-biblio h2 {
+    font-family: "Georgia", serif;
+    color: #3e2e1e;
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+    padding: 12px;
+
+}
+
+.title-biblio h5 {
+    font-family: "Georgia", serif;
+    color: #665241;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* =========================
+   LINHAS DE CARDS (FLEXBOX)
+   ========================= */
+.icones-1, .icones-2 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icones-2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   ESTILO PADRÃO DOS CARDS
+   ========================= */
+.card-1, .card-2, .card-3, .card-4, .card-5 {
+    background-color: #fcf5ea;
+    width: 180px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
+
+    /* Centraliza imagem e texto na vertical e horizontal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito ao passar o mouse sobre o card */
+.card-1:hover, .card-2:hover, .card-3:hover, .card-4:hover, .card-5:hover {
+    transform: translateY(-4px);
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* ÍCONES DOS CARDS */
+.icon1, .icon2, .icon3, .icon4, .icon5 {
+    width: 80px;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+/* TEXTOS DENTRO DOS CARDS */
+.cad_livros, .emp_livros, .dev_livros, .disp_livros, .hist {
+    margin: 0;
+    font-family: "Georgia", serif;
+    font-size: 1rem;
+    font-weight: 200;
+    color: #3e2e1e;
+    text-align: center;
+}
+
+
+/* RODAPÉ*/
+.footer{
+      background-color: #423224;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+}

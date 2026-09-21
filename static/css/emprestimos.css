@@ -1,0 +1,442 @@
+/* =================================
+   PÁGINA DE EMPRÉSTIMOS
+   ================================= */
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #3e2e1e;
+    overflow-x: hidden;
+}
+/* =========================
+   CABEÇALHO
+   ========================= */
+.topo {
+    background-color: #423224;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+}
+
+.Bib {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img_livro {
+    width: 30px;
+}
+
+.biblioteca {
+    color: #F2E7DC;
+    margin: 0;
+    font-family: "Georgia", serif;
+    font-weight: 80;
+    font-size: 1rem;
+}
+
+/* =================================
+   BOTÃO VOLTAR
+   ================================= */
+
+.botao-voltar2 {
+    display: inline-block;
+    margin-left: 15%;
+    margin-top: 35px;
+    text-decoration: none;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #fcf5ea;
+
+    border: 1px solid #dfc8ad;
+    border-radius: 10px;
+
+    padding: 10px 18px;
+
+    color: #3e2e1e;
+
+    font-family: Georgia, serif;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgb(220, 210, 198);
+
+    transition: 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #f5e4cf;
+    transform: translateY(-2px);
+}
+
+/* =================================
+   TÍTULO
+   ================================= */
+.emprestar_livros {
+    width: 76%;
+    margin: 70px auto 30px;
+    margin-left: 200px;
+}
+
+.emprestar_livros h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #3e2e1e;
+}
+.emprestar_livros h5 {
+    margin: 0;
+    font-size: 15px;
+    color: #3e2e1e;
+    font-weight: normal;
+}
+/* =================================
+   ÁREA DOS DOIS CARDS
+   ================================= */
+
+.area-emprestimos {
+    width: 86%;
+    max-width: 1250px;
+    /* Aumente o primeiro valor caso queira descer ainda mais só os cards */
+    margin: 60px auto 0; 
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 18px;
+    align-items: stretch;
+}
+/* =================================
+   CARD NOVO EMPRÉSTIMO
+   ================================= */
+
+.Card_novo_emprestimo,
+.card-emprestimos-ativos {
+
+    background-color: #fcf5ea;
+    border-radius: 15px;
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgb(221, 219, 219);
+}
+
+
+/* =================================
+   CABEÇALHO DOS CARDS
+   ================================= */
+
+.cabecalho-card {
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #dfcdb9;
+    margin-bottom: 22px;
+}
+
+.icon-card {
+
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+}
+
+.cabecalho-card h3 {
+
+    margin: 0 0 8px;
+    font-size: 24px;
+    color: #3e2e1e;
+}
+
+.cabecalho-card h5 {
+
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #5a4532;
+}
+
+
+/* =================================
+   CAMPOS
+   ================================= */
+
+.campo-emprestimo {
+
+    margin-bottom: 20px;
+}
+
+.campo-emprestimo h5 {
+
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: #3e2e1e;
+}
+
+
+/* =================================
+   INPUTS E SELECTS
+   ================================= */
+
+.campo-emprestimo select,
+.campo-emprestimo input {
+
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+    border: 1px solid #d9c3a9;
+    border-radius: 9px;
+    background-color: #fffaf3;
+    padding: 0 13px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #3e2e1e;
+    outline: none;
+    transition: 0.2s;
+}
+
+.campo-emprestimo select:focus,
+.campo-emprestimo input:focus {
+
+    background-color: #f5e4cf;
+    border: 2px solid #a86d35;
+}
+
+
+/* =================================
+   BOTÃO REGISTRAR
+   ================================= */
+
+.btn-registrar {
+
+    width: 100%;
+    height: 48px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 9px;
+    background-color: #996439;
+    color: #fffaf3;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-registrar:hover {
+
+    background-color: #8f5826;
+
+}
+
+.btn-registrar:active {
+
+    transform: translateY(3px);
+
+}
+
+
+/* =================================
+   CADASTRAR USUÁRIO
+   ================================= */
+
+.cad-user {
+    
+    margin-top: 15px;
+    text-align: center;
+}
+
+.btn-cad-user {
+
+    background: transparent;
+    border: none;
+    color: #8f5826;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/* =================================
+   MENSAGENS DE ERRO
+   ================================= */
+
+.erro_registros,
+.erro_data,
+.erro_data_emprestimo,
+.erro_data_prevista {
+
+    margin: 10px 0;
+    text-align: center;
+    color: #a33a2b;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =================================
+   CABEÇALHO DOS REGISTROS
+   ================================= */
+
+.cabecalho-registros {
+
+    display: grid;
+
+    grid-template-columns:
+        1.1fr
+        1.2fr
+        1fr
+        1fr
+        55px;
+
+    gap: 12px;
+    padding: 0 15px 10px;
+    color: #3e2e1e;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =================================
+   LISTA DE EMPRÉSTIMOS
+   ================================= */
+
+.info_emprestimo {
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* =================================
+   CADA EMPRÉSTIMO
+   ================================= */
+
+.info_emprestimo .itens {
+
+    display: grid;
+    grid-template-columns:
+        1.1fr
+        1.2fr
+        1fr
+        1fr
+        55px;
+
+    align-items: center;
+    gap: 12px;
+    min-height: 60px;
+    padding: 8px 15px;
+    background-color: #fffaf3;
+    border: 1px solid #eadbca;
+    border-radius: 9px;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.info_emprestimo .itens:hover {
+
+    background-color: #f8eddf;
+
+}
+
+
+/* =================================
+   TEXTOS DOS EMPRÉSTIMOS
+   ================================= */
+
+.info_emprestimo .itens p {
+
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #3e2e1e;
+}
+
+
+/* =================================
+   BOTÃO EXCLUIR
+   ================================= */
+
+.btn-excluir {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #f0dfca;
+    transition: 0.2s;
+}
+
+.btn-excluir:hover {
+
+    background-color: #e5ccb0;
+    transform: scale(1.05);
+}
+
+.icon-excluir {
+
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+
+/* =================================
+   RESPONSIVIDADE
+   ================================= */
+
+@media (max-width: 1000px) {
+
+    .area-emprestimos {
+
+        width: 90%;
+        grid-template-columns: 1fr;
+    }
+
+    .emprestar_livros {
+
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .botao-voltar2 {
+
+        margin-left: 5%;
+    }
+
+    .emprestar_livros h1 {
+
+        font-size: 32px;
+    }
+
+    .cabecalho-registros {
+
+        display: none;
+    }
+
+    .info_emprestimo .itens {
+
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 15px;
+    }
+
+    .btn-excluir {
+
+        margin-top: 5px;
+    }
+
+}

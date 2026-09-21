@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>LibraTech-Inicial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicial.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body class="body">
-</div>
+<body>
 
 <div class="cabeçalho">
 <div class="Bib">
 <img class= "img_livro" src="/static/img/livro.png">
-<h4 class="biblioteca">Biblioteca</h4>
+<h4 class="biblioteca">LibraTech</h4>
 </div>
 
 <div class="use">
@@ -27,11 +27,14 @@
 </div>
 </div>
 </div>
-
-<div class="imgs">
-<img class= "img_prateleira" src="/static/img/prateleira.png">
-<img class= "img_livros" src="/static/img/livros.png">
+<div class="img-logo">
+    <img class="logo" src="/static/img/livro_marron.png">
 </div>
+<div class="title-biblio">
+    <h2>Bem vindo à LibraTech</h2>
+    <h5>Gerencie livros e emprestimos de forma simples e eficiente</h5>
+</div>
+
 <div class="icones-1">
 
 <a href="/cadastrar">
@@ -56,8 +59,8 @@
 </a>
 </div>
 
-<a href="/li_disponiveis">
 <div class="icones-2">
+<a href="/li_disponiveis">
 <div class="card-4">
 <img class= "icon4" src="/static/img/icon-4.png">
 <h5 class="disp_livros">livros 
@@ -70,6 +73,10 @@
 <h5 class="hist"> Ver histórico </h5>
 </div>
 </a>
+</div>
+
+<div class="footer">
+
 </div>
 </body>
 </html>

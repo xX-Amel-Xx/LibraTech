@@ -1,0 +1,433 @@
+/* =========================
+   PÁGINA DE CADASTRO
+   ========================= */
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #3e2e1e;
+}
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+.topo {
+    background-color: #423224;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+}
+
+.Bib {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img_livro {
+    width: 30px;
+}
+
+.biblioteca {
+    color: #F2E7DC;
+    margin: 0;
+    font-family: "Georgia", serif;
+    font-weight: 80;
+    font-size: 1rem;
+}
+
+/* =========================
+   IMAGEM LIVRO
+   ========================= */
+.img-livro-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    margin-top: 30px;
+}
+
+/* Aplicando a classe diretamente na tag img dentro do container */
+.img-livro-cadastro img.livro-cadastro {
+    width: 100px !important; 
+    max-width: 100%;
+    height: auto;
+}  
+   
+/* =================================
+   BOTÃO VOLTAR
+   ================================= */
+
+.botao-voltar2 {
+    display: inline-block;
+    margin-left: 16%;
+    margin-top: 35px;
+    text-decoration: none;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #fcf5ea;
+
+    border: 1px solid #dfc8ad;
+    border-radius: 10px;
+
+    padding: 10px 18px;
+
+    color: #3e2e1e;
+
+    font-family: Georgia, serif;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgb(220, 210, 198);
+
+    transition: 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #f5e4cf;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.cabeçalho {
+    text-align: center;
+    margin-top: 40px;    
+    margin-bottom: 2px;  
+}
+
+.cabeçalho h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #3e2e1e;
+    font-weight: bold;
+}
+
+
+
+
+/* =========================
+   FORMULÁRIO
+   ========================= */
+
+
+.campo.cadastro {
+    width: 75%;
+    max-width: 1000px;
+    
+    /* Espaçamento superior adicionado para descer o cartão */
+    margin: 70px auto 0;
+
+    background-color: #fcf5ea;
+    padding: 30px 35px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgb(221, 219, 219);
+    box-sizing: border-box;
+}
+
+/* Títulos dos campos */
+
+.campo.cadastro h5 {
+    margin: 12px 0 7px;
+
+    font-size: 16px;
+
+    color: #3e2e1e;
+}
+
+
+
+/* Títulos dos campos */
+
+.campo.cadastro h5 {
+    margin: 12px 0 7px;
+
+    font-size: 16px;
+
+    color: #3e2e1e;
+}
+
+
+/* =========================
+   INPUTS E SELECT
+   ========================= */
+
+.campo.cadastro input,
+.campo.cadastro select {
+    width: 100%;
+    height: 45px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d9c3a9;
+
+    border-radius: 10px;
+
+    background-color: #fffaf3;
+
+    padding: 0 14px;
+
+    font-family: Georgia, serif;
+
+    font-size: 15px;
+
+    color: #3e2e1e;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+/* Quando clicar no campo */
+
+.campo.cadastro input:focus,
+.campo.cadastro select:focus {
+    background-color: #f5e4cf;
+
+    border: 2px solid #a86d35;
+
+    outline: none;
+}
+
+
+/* Placeholder */
+
+.campo.cadastro input::placeholder {
+    color: #9b8b7a;
+}
+
+
+/* Select */
+
+.campo.cadastro select {
+    cursor: pointer;
+}
+
+
+/* =========================
+   BOTÃO ADICIONAR
+   ========================= */
+
+.bt1 {
+    display: block;
+
+    width: 270px;
+    height: 45px;
+
+    margin: 25px auto 0;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: #996439;
+
+    color: #fffaf3;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.15s;
+}
+
+.bt1:hover {
+    background-color: #8f5826;
+}
+
+.bt1:active {
+    transform: translateY(3px);
+}
+
+
+/* =========================
+   REGISTROS DOS LIVROS
+   ========================= */
+
+.itens {
+    display: grid;
+
+    grid-template-columns:
+        55px
+        1fr
+        180px
+        130px
+        130px
+        50px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background-color: #fcf5ea;
+
+    padding: 10px 15px;
+
+    margin: 8px 0;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgb(230, 224, 215);
+
+    box-sizing: border-box;
+}
+/* =========================
+   ÍCONE DO LIVRO
+   ========================= */
+
+.livro {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   TÍTULO E AUTOR
+   ========================= */
+
+.info-livro {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+
+/* Título */
+
+.info-livro .titulo {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    color: #3e2e1e;
+}
+
+
+/* Autor */
+
+.info-livro .autor {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 12px;
+
+    color: #3e2e1e;
+}
+
+
+/* =========================
+   EDITORA / ANO / CATEGORIA
+   ========================= */
+
+.info-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+/* Texto das informações */
+
+.info-item p {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 12px;
+
+    color: #3e2e1e;
+}
+
+
+/* Ícones */
+
+.editora,
+.ano_pub,
+.etiqueta {
+    width: 18px;
+    height: 18px;
+
+    object-fit: contain;
+}
+
+.Informacoes {
+    width: 75%;
+    max-width: 1000px;
+    margin: 25px auto 0;
+    box-sizing: border-box;
+}
+.campo.cadastro {
+    width: 75%;
+    max-width: 1000px;
+}
+/* =========================
+   BOTÃO EXCLUIR
+   ========================= */
+
+.btn-excluir {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* Ícone de excluir */
+
+.icon-excluir {
+    width: 30px;
+
+    transition: 0.15s;
+}
+
+
+/* Efeito ao passar o mouse */
+
+.btn-excluir:hover .icon-excluir {
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   MENSAGENS DE ERRO
+   ========================= */
+
+.erro,
+.erro2 {
+    text-align: center;
+
+    margin: 15px 0 0;
+
+    color: #a33a2b;
+
+    font-weight: bold;
+}
+
+

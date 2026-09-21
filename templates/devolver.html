@@ -1,41 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/devolver.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>LibraTech - Devolver</title>
 </head>
 <body>
-    <div>
-<a href="/inicial" class="botao-voltar2">
-    <button class="btn-voltar">
-    <i class="bi bi-arrow-left-square-fill"></i>
-</button>
-</a>
-    <h1>Devolver Livros</h1>
-    <h5> selecione o emprestimo para a devolução do livro</h5>
-<h3>Emprestimos ativos</h3>
- <h5> livros que ainda não foram devolvidos</h5>
-
-<div class="info_não_devolvidos">
-{% for emprestimo in emprestimos %}
-
-<div class="itens">
-<p>{{emprestimo.leitor.nome}}</p>
-<p>{{emprestimo.livro.titulo}}</p>
-<p>Data empréstimo: {{ emprestimo.data_emprestimo }}</p>
-<p>Data prevista: {{ emprestimo.data_prevista }}</p>
-</div>
-<div>
-<p>{{ emprestimo.status }}</p>
-</div>
-    <a href="/devolver/{{ emprestimo.id }}">
-                <button class="bt1" type="button">
-                    Devolver livro
-                </button>
-            </a>
-
+    
+    <!-- BARRA SUPERIOR -->
+    <div class="topo">
+        <div class="Bib">
+            <img class="img_livro" src="/static/img/livro.png" alt="Logo Libratech">
+            <h4 class="biblioteca">LibraTech</h4>
         </div>
-{% endfor %}
+    </div>
+
+    <!-- BOTÃO VOLTAR -->
+    <div class="area-voltar">
+        <a href="/inicial" class="botao-voltar2">
+            <button class="btn-voltar" type="button">
+                <i class="bi bi-arrow-left-square-fill"></i>
+                Voltar
+            </button>
+        </a>
+    </div>
+
+    <!-- TÍTULO PRINCIPAL -->
+    <div class="cabeçalho-devolucao">
+        <h1>Devolver livros</h1>
+        <p class="subtitulo-devolucao">Selecione o empréstimo que deseja finalizar a devolução.</p>
+    </div>
+
+    <!-- CARD PRINCIPAL CONTAINER -->
+    <div class="card-principal">
+        
+        <!-- CABEÇALHO DO CARD -->
+        <div class="card-header-info">
+            <i class="bi bi-list-task icon-card"></i>
+            <div>
+                <h3>Empréstimos ativos</h3>
+                <h5>Livros que ainda não foram devolvidos</h5>
+            </div>
+        </div>
+
+        <!-- LISTA DE EMPRÉSTIMOS -->
+        <div class="info_não_devolvidos">
+            {% for emprestimo in emprestimos %}
+            <div class="itens">
+                
+                <!-- ÍCONE DE LIVRO -->
+                <div class="circulo-livro">
+                    <img class="livro" src="/static/img/icon-1.png" alt="Livro">
+                </div>
+
+                <!-- DADOS DO LIVRO E LEITOR -->
+                <div class="info-livro-leitor">
+                    <p class="titulo-livro">{{ emprestimo.livro.titulo }}</p>
+                    <p class="autor-livro"><strong>Autor:</strong> {{ emprestimo.livro.autor }}</p>
+                    <p class="leitor-nome"><strong>Leitor:</strong> {{ emprestimo.leitor.nome }}</p>
+                </div>
+
+                <!-- DATA EMPRÉSTIMO -->
+                <div class="info-data">
+                    <span class="label-data"><i class="bi bi-calendar3"></i> Emprestado em</span>
+                    <span class="val-data">{{ emprestimo.data_emprestimo }}</span>
+                </div>
+
+                <!-- DATA PREVISTA -->
+                <div class="info-data">
+                    <span class="label-data"><i class="bi bi-calendar3"></i> Devolução prevista</span>
+                    <span class="val-data">{{ emprestimo.data_prevista }}</span>
+                </div>
+
+                <!-- TAG STATUS -->
+             <div class="badge-status">
+    <p class="status-tag 
+        {% if 'hoje' in emprestimo.status|lower %}hoje
+        {% elif 'atrasad' in emprestimo.status|lower %}atrasado
+        {% else %}no-prazo{% endif %}">
+        {{ emprestimo.status }}
+    </p>
+            </div>
+
+                <!-- BOTÃO DEVOLVER -->
+                <div class="area-btn">
+                    <a href="/devolver/{{ emprestimo.id }}">
+                        <button class="bt1" type="button">
+                            <i class="bi bi-arrow-counterclockwise"></i> Devolver livro
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
 </body>
 </html>

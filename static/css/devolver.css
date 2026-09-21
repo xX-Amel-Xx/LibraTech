@@ -1,0 +1,269 @@
+/* =================================
+   PÁGINA DEVOLVER LIVROS (devolver.css)
+   ================================= */
+
+/* --- TOPO --- */
+.topo {
+    background-color: #423224;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.Bib {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img_livro {
+    width: 28px;
+    height: auto;
+}
+
+.biblioteca {
+    color: #f2e7dc;
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+/*  BOTÃO VOLTAR  */
+.area-voltar {
+    width: 86%;
+    max-width: 1100px;
+    margin: 50px auto 0 auto; 
+    margin-left: 200px;
+}
+
+.botao-voltar2 {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fcf5ea;
+    border: 1px solid #dfc8ad;
+    border-radius: 10px;
+    padding: 10px 18px;
+    color: #3e2e1e;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(220, 210, 198, 0.6);
+    transition: 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #f5e4cf;
+    transform: translateY(-2px);
+}
+
+/* --- TÍTULOS DE CABEÇALHO --- */
+.cabeçalho-devolucao {
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+.cabeçalho-devolucao h1 {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    color: #3e2e1e;
+    margin: 0 0 10px 0;
+}
+
+.subtitulo-devolucao {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: #6b5540;
+    margin-top: 30px;
+}
+
+/* --- CARD PRINCIPAL (BEGE CLARO) --- */
+.card-principal {
+    width: 86%;
+    max-width: 1100px;
+    margin: 80px auto 50px auto;
+    background-color: #fcf5ea;
+    border-radius: 16px;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* CABEÇALHO DENTRO DO CARD */
+.card-header-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.icon-card {
+    font-size: 28px;
+    color: #3e2e1e;
+}
+
+.card-header-info h3 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #3e2e1e;
+}
+
+.card-header-info h5 {
+    margin: 3px 0 0 0;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    font-weight: normal;
+    color: #7a6552;
+}
+
+/* --- ITEM INDIVIDUAL DO EMPRÉSTIMO --- */
+.info_não_devolvidos .itens {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fffaf3;
+    border: 1px solid #eadbca;
+    border-radius: 14px;
+    padding: 20px 25px;
+    margin-bottom: 16px;
+    gap: 15px;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.info_não_devolvidos .itens:hover {
+    background-color: #f8eddf;
+}
+
+/* CÍRCULO COM ÍCONE DO LIVRO */
+.circulo-livro {
+    width: 65px;
+    height: 65px;
+    background-color: #f0dfca;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.circulo-livro .livro {
+    width: 32px;
+    height: auto;
+}
+
+/* DADOS DO LIVRO */
+.info-livro-leitor {
+    flex: 1.5;
+    min-width: 180px;
+}
+
+.titulo-livro {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #3e2e1e;
+    margin: 0 0 6px 0;
+}
+
+.autor-livro, .leitor-nome {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #5a4532;
+    margin: 2px 0;
+}
+
+/* DATAS */
+.info-data {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.label-data {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: #7a6552;
+}
+
+.val-data {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3e2e1e;
+}
+
+/* --- BADGES / TAGS DE STATUS --- */
+.badge-status {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo Base da Tag */
+.status-tag {
+    display: inline-block;
+    margin: 0;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #e2eed0; /* Padrão (Verde) */
+    color: #43631d;
+}
+
+/* Dentro do Prazo (Verde) */
+.status-tag.no-prazo {
+    background-color: #e2eed0;
+    color: #43631d;
+}
+
+/* Prevista para hoje (Amarelo) */
+.status-tag.hoje {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* Atrasado (Vermelho) */
+.status-tag.atrasado {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* BOTÃO DEVOLVER */
+.area-btn .bt1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 9px;
+    background-color: #c49a6c;
+    color: #2d1f13;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.area-btn .bt1:hover {
+    background-color: #b58857;
+    transform: translateY(-2px);
+}
+
