@@ -42,12 +42,12 @@ def cadastrar():
 #=====================ROTA REGISTRAR=====================
 @app.route("/registrar",methods=["POST"])
 def registrar():
-            titulo=request.form["titulo"].strip()
-            autor=request.form["autor"].strip()
-            editora=request.form["editora"].strip()
-            ano_publicacao=request.form["ano_publicacao"].strip()
-            categoria_id=request.form["categoria_id"]
-            if titulo == "" or autor == "" or editora == "":
+            titulo = request.form.get("titulo", "").strip()
+            autor = request.form.get("autor", "").strip()
+            editora = request.form.get("editora", "").strip()
+            ano_publicacao = request.form.get("ano_publicacao", "").strip()
+            categoria_id = request.form.get("categoria_id")
+            if titulo == "" or autor == "" or editora == "" or not categoria_id:
                     return render_template(
                     "cadastrar.html",
                     erro="Insira uma mensagem antes de salvar."
@@ -77,6 +77,7 @@ def deletar(id):
     if emprestimo:
      return render_template("erro_user.html")
     registro = Livro.query.get(id)
+    
     if registro:
             db.session.delete(registro)
             db.session.commit()
@@ -92,10 +93,10 @@ def cad_user():
 #=====================ROTA REGISTRAR LEITOR=====================
 @app.route("/registrar_leitor",methods=["POST"])
 def registrar_leitor():
-       nome=request.form["nome"].strip()
-       email=request.form["email"].strip()
-       telefone=request.form["telefone"].strip()
-       data_cadastro=request.form["data_cadastro"].strip()
+       nome=request.form.get("nome","").strip()
+       email=request.form.get("email","").strip()
+       telefone=request.form.get("telefone","").strip()
+       data_cadastro=request.form.get("data_cadastro"," ").strip()
 
        
        if nome=="" or email=="" or telefone=="" or data_cadastro=="":
@@ -171,7 +172,7 @@ def novo_emprestimo():
         if livro_id == "" or leitor_id == "" or data_emprestimo == "" or data_prevista == "":
                     return render_template(
                     "emprestar.html",
-                    erro_registros="Insira os registros.",
+                    erro_registros="Insira os registrojs.",
                     **carregar_dados_emprestimo()
                     
                 )
@@ -275,7 +276,9 @@ def livros_disponiveis():
     editora_livro = Livro.query.all()
 
     emprestimos = Emprestimo.query.filter_by(data_devolucao=None).all()
+
     livros_emprestados = [emprestimo.livro_id for emprestimo in emprestimos]
+    
     livros_disponiveis = [
         livro for livro in livros
         if livro.id not in livros_emprestados
