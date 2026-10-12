@@ -172,7 +172,7 @@ def novo_emprestimo():
         if livro_id == "" or leitor_id == "" or data_emprestimo == "" or data_prevista == "":
                     return render_template(
                     "emprestar.html",
-                    erro_registros="Insira os registrojs.",
+                    erro_registros="Insira os registros.",
                     **carregar_dados_emprestimo()
                     
                 )
@@ -433,8 +433,23 @@ def historico_emprestio():
                 emprestimo for emprestimo in itens_pesquisados
                             if emprestimo.status==status ]
 
+    devolvidos=[emprestimo for emprestimo in emprestimos
+                if emprestimo.data_devolucao==dia]
+    
+    em_aberto=[emprestimo for emprestimo in emprestimos
+               if emprestimo.status=="Em aberto"]
+    atrasados=[emprestimo for emprestimo in emprestimos
+               if emprestimo.status=="Atrasado"]
+    total_emprestimos= len(emprestimos)
+    total_devolvidos=len(devolvidos)
+    total_abertos=len(em_aberto)
+    total_atrasados=len(atrasados)
+    
     return render_template("historico.html", emprestimos=itens_pesquisados,
-                           pesquisa=pesquisa,usuario=usuario,livros=livros  )
+                           pesquisa=pesquisa,usuario=usuario,livros=livros, 
+                           total_emprestimos=total_emprestimos,total_abertos=total_abertos,
+                            total_devolvidos=total_devolvidos,
+                              total_atrasados=total_atrasados )
 
 #==================ROTA LOGIN=========================
 @app.route("/login",methods=['GET', 'POST'])
@@ -442,8 +457,7 @@ def login():
 
         # Verifica se já existe uma sessão de login
             if 'id' in session:
-                flash("Você já está logado!", "info")
-                
+         
                 return redirect('/inicial')
 
         
@@ -540,6 +554,18 @@ def nova_senha():
 
     return render_template("nova_senha.html")
 
+#==================ROTA TELA ERRO===================================
+@app.route("/deletar_emprestimo/<int:id>")
+def confirmar_exclusao(id):
+    emprestimo = db.session.get(Emprestimo, id)
+
+    if emprestimo is None:
+        return "Empréstimo não encontrado", 404
+
+    return render_template(
+        "erro_user.html",
+        emprestimo=emprestimo
+    )
 #==================ROTA TELA CADASTRAR USUARIO======================
 @app.route("/tela_cadastrar", methods=['GET','POST'])
 def tela_cadastrar():

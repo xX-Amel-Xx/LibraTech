@@ -1,69 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>Biblioteca - Login</title>
 </head>
 <body>
-    <div>
 
-        <a href="/inicial" class="botao-voltar2">
-            <button class="btn-voltar" type="button">
-                <i class="bi bi-arrow-left-square-fill"></i>
-            </button>
-        </a>
-
+    <!-- BARRA SUPERIOR (NAVBAR) -->
+    <div class="topo">
+        <div class="Bib">
+            <i class="bi bi-book-half logo-icon"></i>
+            <h4 class="biblioteca">Biblioteca</h4>
+        </div>
+        <div class="usuario-topo">
+            <i class="bi bi-person-fill"></i>
+            <span>Entrar</span>
+        </div>
     </div>
-<div></div>
-<h1>Histórico de emprestimos</h1>
 
-    <h5>Consulte todos os emprestimos realizados</h5>
+    <!-- CONTAINER CENTRAL DE LOGIN -->
+    <div class="container-login">
+        <div class="card-login">
 
-    <form action="/historico" method="POST">
-     <input
-     type="text"
-     name="pesquisa"
-     placeholder="Pesquisar por Livro,usuário,categoria...">
+            <!-- ILUSTRAÇÃO DO TOPO DO CARD -->
+            <div class="circulo-ilustracao">
+                <img src="/static/img/icon-1.png" alt="Ilustração Livros">
+            </div>
 
-          <!--Status -->
-<div></div>
- <h5>Status</h5>
+            <!-- TÍTULO E SUBTÍTULO -->
+            <h2>Biblioteca</h2>
+            <p class="subtitulo">Faça login para acessar o sistema</p>
 
-<select name="status" id="status">
-    <option value="">Todos os status</option>
-     <option value="Devolvido">Devolvido</option>
-    <option value="Atrasado">Atrasado</option>
-    <option value="Em aberto">Em aberto</option>
-</select>
-<button type="submit">Pesquisar</button>
-  </form>
-  <div>
-    {% for emprestimo in emprestimos %}
-    <p>
-        {{ emprestimo.leitor.nome }}
-        
-        {{ emprestimo.livro.titulo }}
-        
-        {{ emprestimo.status }}
-        {{ emprestimo.data_emprestimo}}
-        {{ emprestimo.data_prevista}}
+            <!-- FORMULÁRIO DE LOGIN -->
+            <form action="/login" method="POST" class="form-login">
 
-        <p>
-    Data de devolução:
+                <!-- CAMPO USUÁRIO -->
+                <div class="campo-input">
+                    <i class="bi bi-person icon-input"></i>
+                    <input type="text" name="usuario" placeholder="Usuário" required>
+                </div>
 
-    {% if emprestimo.data_devolucao %}
-        {{ emprestimo.data_devolucao }}
-    {% else %}
-        Emprestado
-    {% endif %}
-    
-</p>
-      {% else %}
-    <p>Não há empréstimos atrasados ou devolvidos</p>
-    </p>
+                <!-- CAMPO SENHA -->
+                <div class="campo-input">
+                    <i class="bi bi-lock icon-input"></i>
+                    <input type="password" name="senha" placeholder="Senha" required>
+                </div>
 
-{% endfor %}
-  </div>
+                <!-- BOTÃO ENTRAR -->
+                <button type="submit" class="btn-entrar">Entrar</button>
+
+                <!-- LINK ESQUECEU A SENHA -->
+                <div class="link-esqueceu">
+                    <a href="#">Esqueceu sua senha?</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
 </body>
 </html>
