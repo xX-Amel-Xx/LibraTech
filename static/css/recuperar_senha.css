@@ -1,0 +1,255 @@
+/* =================================
+   PÁGINA DE RECUPERAÇÃO / REDEFINIÇÃO DE SENHA (recuperar_senha.css)
+   ================================= */
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #3e2e1e;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- BARRA SUPERIOR (NAVBAR) --- */
+.topo {
+    background-color: #423224;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 35px;
+    box-sizing: border-box;
+}
+
+.Bib {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img_livro {
+    width: 24px;
+    height: auto;
+}
+
+.biblioteca {
+    color: #f2e7dc;
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 1.1rem;
+}
+
+.usuario-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f2e7dc;
+    font-size: 14px;
+}
+
+.divisor-topo {
+    color: #8c7863;
+    margin: 0 4px;
+}
+
+.link-sair {
+    color: #f2e7dc;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+.link-sair:hover {
+    color: #dfc8ad;
+}
+
+
+/* =================================
+   BOTÃO VOLTAR
+   ================================= */
+
+.botao-voltar2 {
+    display: inline-block;
+    margin-left: 15%;
+    margin-top: 35px;
+    text-decoration: none;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #fcf5ea;
+
+    border: 1px solid #dfc8ad;
+    border-radius: 10px;
+
+    padding: 10px 18px;
+
+    color: #3e2e1e;
+
+    font-family: Georgia, serif;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgb(220, 210, 198);
+
+    transition: 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #f5e4cf;
+    transform: translateY(-2px);
+}
+
+/* --- CONTAINER CENTRALIZADO --- */
+.container-recuperar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- CARD CENTRAL --- */
+.card-recuperar {
+    background-color: #fcf5ea;
+    border: 1px solid #e2d2be;
+    border-radius: 20px;
+    padding: 50px 45px 40px;
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(62, 46, 30, 0.08);
+    box-sizing: border-box;
+}
+
+/* --- ÍCONE DO LIVRO NO TOPO (CORRIGIDO PARA NÃO ESTICAR) --- */
+.area-icone-livro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.area-icone-livro img,
+.img-livro-card {
+    width: 60px !important;
+    max-width: 60px !important;
+    height: auto !important;
+    object-fit: contain;
+}
+
+/* --- TÍTULO E SUBTÍTULO --- */
+.card-recuperar h3 {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: #3e2e1e;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.subtitulo {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #7a6855;
+    margin: 0 0 28px 0;
+}
+
+/* --- FORMULÁRIO E INPUT --- */
+.form-recuperar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.campo-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.icon-input {
+    position: absolute;
+    left: 16px;
+    color: #7a6552;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.campo-input input {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid #d9c3a9;
+    border-radius: 12px;
+    background-color: #fffaf3;
+    padding: 0 16px 0 46px;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: #3e2e1e;
+    outline: none;
+    transition: 0.2s;
+}
+
+.campo-input input:focus {
+    background-color: #f5e4cf;
+    border: 2px solid #a86d35;
+}
+
+.campo-input input::placeholder {
+    color: #8c7863;
+}
+
+/* --- BOTÃO CONTINUAR --- */
+.btn-continuar {
+    width: 100%;
+    height: 50px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 12px;
+    background-color: #423224;
+    color: #fffaf3;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-continuar:hover {
+    background-color: #584433;
+    transform: translateY(-1px);
+}
+
+.btn-continuar:active {
+    transform: translateY(1px);
+}
+
+/* --- MENSAGEM DE ERRO --- */
+.erro {
+    margin: 15px 0 0;
+    color: #a33a2b;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* --- LINK VOLTAR PARA O LOGIN --- */
+.link-voltar-login {
+    margin-top: 25px;
+}
+
+.link-voltar-login a {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #8f5826;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+.link-voltar-login a:hover {
+    color: #3e2e1e;
+}

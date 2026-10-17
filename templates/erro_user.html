@@ -3,19 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excluir empréstimo</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/erro.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <title>Não foi possível excluir | LibraTech</title>
 </head>
+
 <body>
 
-    <img class="img-erro" src="/static/img/erro.png">
+    <!-- CABEÇALHO -->
+    <header class="topo">
+        <div class="Bib">
+            <img
+                class="img_livro"
+                src="{{ url_for('static', filename='img/livro.png') }}"
+                alt="Logo LibraTech">
 
-    <h4>Tem certeza de que deseja excluir este empréstimo?</h4>
+            <h4 class="biblioteca">LibraTech</h4>
+        </div>
 
-    <p>{{ emprestimo.leitor.nome }}</p>
+            <!-- BOTÃO VOLTAR -->
+    <div class="area-voltar">
+        <a href="/cadastrar" class="botao-voltar2">
+            <button class="btn-voltar" type="button">
+                <i class="bi bi-arrow-left-square-fill"></i>
+                Voltar
+            </button>
+        </a>
+    </div>
+    </header>
 
-    <a href="/deletar_emprestimo/{{ emprestimo.id }}" class="btn-excluir">
-        <img class="icon-excluir" src="/static/img/BtnExcluir.png" alt="Excluir">
-    </a>
+    <!-- CONTEÚDO -->
+    <main class="pagina-exclusao">
+        <section class="card-exclusao">
+
+            <!-- IMAGEM DE ERRO -->
+            <div class="area-icone-erro">
+                <img
+                    class="img-erro"
+                    src="{{ url_for('static', filename='img/erro.png') }}"
+                    alt="Livro com símbolo de alerta">
+            </div>
+
+            <!-- MENSAGEM -->
+            <div class="texto-exclusao">
+                <span class="etiqueta-alerta">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    Atenção
+                </span>
+
+                <h1>Não foi possível excluir</h1>
+
+                <p class="mensagem-principal">
+                    Este registro está vinculado a um empréstimo.
+                </p>
+
+                <p class="mensagem-secundaria">
+                    Para manter a integridade dos dados da biblioteca,
+                    não é possível excluir este livro ou usuário enquanto
+                    houver empréstimos associados.
+                </p>
+            </div>
+
+        </section>
+    </main>
 
 </body>
 </html>

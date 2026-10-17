@@ -1,5 +1,5 @@
 /* =================================
-   PÁGINA DE CADASTRO (tela_cadastrar.css)
+   PÁGINA DE CADASTRO 
    ================================= */
 
 /* --- TOPO --- */
@@ -67,7 +67,7 @@
     padding: 20px 0 50px 0;
 }
 
-/* --- CARD DE CADASTRO (BEGE CLARO) --- */
+/* --- CARD DE CADASTRO--- */
 .card-cadastro {
     background-color: #fcf5ea;
     width: 100%;
@@ -169,7 +169,7 @@
 }
 
 /* =================================
-   MENSAGENS DE ERRO / ALERTA (FLASH)
+   MENSAGENS DE ERRO 
    ================================= */
 
 .mensagens_erro {
@@ -238,17 +238,3 @@
     color: #3e2e1e;
 }
 
-/* Remove as setinhas padrão do input do tipo number no Chrome/Safari/Edge */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 480px) {
-    .card-cadastro {
-        padding: 25px 20px;
-        margin: 0 15px;
-    }
-}

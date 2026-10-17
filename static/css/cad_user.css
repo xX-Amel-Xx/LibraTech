@@ -267,38 +267,3 @@ h1 {
     height: 25px;
     object-fit: contain;
 }
-
-/* =================================
-   RESPONSIVIDADE
-   ================================= */
-
-@media (max-width: 1000px) {
-    .campo.cadastro {
-        width: 90%;
-    }
-
-    .Informacoes {
-        width: 90%;
-    }
-}
-
-@media (max-width: 700px) {
-    .botao-voltar2 {
-        margin-left: 5%;
-    }
-
-    .campo.cadastro {
-        width: 90%;
-        padding: 20px;
-    }
-
-    .itens {
-        grid-template-columns: 1fr;
-        gap: 6px;
-        padding: 15px;
-    }
-
-    .btn-excluir {
-        margin-top: 5px;
-    }
-}

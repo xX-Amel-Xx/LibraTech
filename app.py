@@ -73,14 +73,19 @@ def registrar():
 #=====================ROTA DELETAR LIVROS======================
 @app.route("/deletar/<int:id>")
 def deletar(id):
-    emprestimo = Emprestimo.query.filter_by(leitor_id=id).first()
+    registro = Livro.query.get_or_404(id)
+
+    # Verifica se o livro está vinculado a algum empréstimo
+    emprestimo = Emprestimo.query.filter_by(
+        livro_id=registro.id
+    ).first()
+
     if emprestimo:
-     return render_template("erro_user.html")
-    registro = Livro.query.get(id)
-    
-    if registro:
-            db.session.delete(registro)
-            db.session.commit()
+        return render_template("erro_user.html")
+
+    db.session.delete(registro)
+    db.session.commit()
+
     return redirect("/cadastrar")
 
 #===================== ROTA CADASTRAR USUÁRIO =====================
@@ -323,8 +328,11 @@ def livros_disponiveis():
     editora_livro=editora_livro
     )
 
+#==================ROTA HISTÓRICO=========================
 @app.route("/historico",methods=["GET","POST"])
 def historico_emprestio():
+
+
     emprestimos=Emprestimo.query.all()
     dia=date.today()
 

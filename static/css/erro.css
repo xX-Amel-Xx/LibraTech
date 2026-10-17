@@ -1,0 +1,167 @@
+/* =================================
+   MENSAGEM DE ERRO
+   ================================= */
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #3e2e1e;
+    margin: 0;
+    padding: 0;
+    background-color: #F7F1EB;
+}
+
+/* --- TOPO --- */
+.topo {
+    background-color: #423224;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.Bib {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img_livro {
+    width: 22px;
+    height: auto;
+}
+
+.biblioteca {
+    color: #F2E7DC;
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 1.1rem;
+}
+
+.usuario-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #F2E7DC;
+    font-size: 15px;
+}
+/* --- BOTÃO VOLTAR --- */
+.area-voltar {
+    width: 86%;
+    max-width: 1250px;
+    margin: 40px auto 10px auto;
+    margin-top: 50px;
+    margin-left: 160px;
+}
+
+.botao-voltar2 {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fcf5ea;
+    border: 1px solid #dfc8ad;
+    border-radius: 10px;
+    padding: 10px 18px;
+    color: #3e2e1e;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(220, 210, 198, 0.6);
+    transition: 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #f5e4cf;
+    transform: translateY(-2px);
+}
+/* --- CONTEÚDO / CARD CENTRAL --- */
+.pagina-exclusao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-exclusao {
+    background-color: #fcf5ea;
+    border: 1px solid #e2d2be;
+    border-radius: 20px;
+    padding: 45px 50px;
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(62, 46, 30, 0.06);
+    box-sizing: border-box;
+}
+
+/* --- ÁREA DO ÍCONE DE ERRO --- */
+.area-icone-erro {
+    width: 130px;
+    height: 130px;
+    background-color: #f3e5d8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px auto;
+}
+
+.img-erro {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* --- TEXTOS E ELEMENTOS DO CARD --- */
+.texto-exclusao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.etiqueta-alerta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #ebd7c4;
+    color: #4a3826;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.texto-exclusao h1 {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: #3e2e1e;
+    margin: 0 0 12px 0;
+}
+
+.mensagem-principal {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: #4a3826;
+    margin: 0 0 18px 0;
+    font-weight: normal;
+}
+
+.mensagem-secundaria {
+    font-family: Georgia, serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #7a6855;
+    margin: 0;
+    max-width: 500px;
+}

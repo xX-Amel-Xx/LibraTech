@@ -48,7 +48,6 @@ body {
     margin-top: 30px;
 }
 
-/* Aplicando a classe diretamente na tag img dentro do container */
 .img-livro-cadastro img.livro-cadastro {
     width: 100px !important; 
     max-width: 100%;
@@ -402,7 +401,7 @@ body {
 /* Ícone de excluir */
 
 .icon-excluir {
-    width: 30px;
+    width: 40px;
 
     transition: 0.15s;
 }

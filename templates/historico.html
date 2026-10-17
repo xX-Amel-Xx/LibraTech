@@ -1,67 +1,374 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/historico.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <title>Biblioteca - Login</title>
+
+    <title>Histórico de Empréstimos | LibraTech</title>
 </head>
+
 <body>
 
-    <!-- BARRA SUPERIOR (NAVBAR) -->
+    <!-- BARRA SUPERIOR -->
     <div class="topo">
         <div class="Bib">
-            <i class="bi bi-book-half logo-icon"></i>
+            <img class="img_livro"
+                 src="{{ url_for('static', filename='img/livro.png') }}"
+                 alt="Logo LibraTech">
+
             <h4 class="biblioteca">Biblioteca</h4>
         </div>
-        <div class="usuario-topo">
-            <i class="bi bi-person-fill"></i>
-            <span>Entrar</span>
-        </div>
+
     </div>
+    <!-- BOTÃO VOLTAR -->
+    <div class="area-voltar">
+        <a href="/inicial" class="botao-voltar2">
+            <button class="btn-voltar" type="button">
+                <i class="bi bi-arrow-left-square-fill"></i>
+                Voltar
+            </button>
+        </a>
+    </div>
+    <!-- CABEÇALHO DA PÁGINA -->
+    <header class="cabeçalho-historico">
 
-    <!-- CONTAINER CENTRAL DE LOGIN -->
-    <div class="container-login">
-        <div class="card-login">
+        <div class="livro">
+            <img class="livro" src="{{ url_for('static', filename='img/icon-4.png') }}"
+                 alt="Ícone de livros">
+        </div>
 
-            <!-- ILUSTRAÇÃO DO TOPO DO CARD -->
-            <div class="circulo-ilustracao">
-                <img src="/static/img/icon-1.png" alt="Ilustração Livros">
-            </div>
+        <div class="textos-cabeçalho">
+            <h1>Histórico de Empréstimos</h1>
+            <h5>Consulte todos os empréstimos já realizados.</h5>
+        </div>
 
-            <!-- TÍTULO E SUBTÍTULO -->
-            <h2>Biblioteca</h2>
-            <p class="subtitulo">Faça login para acessar o sistema</p>
+    </header>
 
-            <!-- FORMULÁRIO DE LOGIN -->
-            <form action="/login" method="POST" class="form-login">
+    <!-- CARTÃO PRINCIPAL -->
+    <main class="card-principal">
 
-                <!-- CAMPO USUÁRIO -->
-                <div class="campo-input">
-                    <i class="bi bi-person icon-input"></i>
-                    <input type="text" name="usuario" placeholder="Usuário" required>
+        <!-- FILTROS -->
+        <section class="card-filtro">
+
+            <form action="{{ url_for('historico_emprestio') }}"
+                  method="POST"
+                  class="form-grid">
+
+                <!-- PESQUISA -->
+                <div class="grupo-campo campo-pesquisa">
+
+                    <label for="pesquisa">Pesquisar</label>
+
+                    <div class="input-com-icone">
+                        <i class="bi bi-search"></i>
+
+                        <input
+                            type="text"
+                            id="pesquisa"
+                            name="pesquisa"
+                            placeholder="Buscar por livro, usuário ou ID..."
+                            value="{{ pesquisa | default('') }}">
+                    </div>
+
                 </div>
 
-                <!-- CAMPO SENHA -->
-                <div class="campo-input">
-                    <i class="bi bi-lock icon-input"></i>
-                    <input type="password" name="senha" placeholder="Senha" required>
+                <!-- PERÍODO -->
+                <div class="grupo-campo campo-periodo">
+
+                    <label for="data_inicial">Filtrar por período</label>
+
+                    <div class="periodo-inputs">
+
+                        <div class="input-com-icone">
+                            <i class="bi bi-calendar3"></i>
+
+                            <input
+                                type="date"
+                                id="data_inicial"
+                                name="data_inicial"
+                                value="{{ data_inicial | default('') }}"
+                                aria-label="Data inicial">
+                        </div>
+
+                        <span class="separador-data">—</span>
+
+                        <div class="input-com-icone">
+                            <i class="bi bi-calendar3"></i>
+
+                            <input
+                                type="date"
+                                id="data_final"
+                                name="data_final"
+                                value="{{ data_final | default('') }}"
+                                aria-label="Data final">
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <!-- BOTÃO ENTRAR -->
-                <button type="submit" class="btn-entrar">Entrar</button>
+                <!-- STATUS -->
+                <div class="grupo-campo campo-status">
 
-                <!-- LINK ESQUECEU A SENHA -->
-                <div class="link-esqueceu">
-                    <a href="#">Esqueceu sua senha?</a>
+                    <label for="status">Filtrar por status</label>
+
+                    <select id="status" name="status">
+
+                        <option value=""
+                            {% if not status %}selected{% endif %}>
+                            Todos
+                        </option>
+
+                        <option value="Devolvido"
+                            {% if status == 'Devolvido' %}selected{% endif %}>
+                            Devolvido
+                        </option>
+
+                        <option value="Em aberto"
+                            {% if status == 'Em aberto' %}selected{% endif %}>
+                            Em aberto
+                        </option>
+
+                        <option value="Atrasado"
+                            {% if status == 'Atrasado' %}selected{% endif %}>
+                            Atrasado
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- BOTÃO FILTRAR -->
+                <div class="grupo-btn">
+
+                    <button type="submit" class="btn-filtrar">
+                        <i class="bi bi-funnel-fill"></i>
+                        Filtrar
+                    </button>
+
                 </div>
 
             </form>
 
-        </div>
-    </div>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="cards-resumo">
+
+            <!-- TOTAL -->
+            <div class="card-estatistica">
+
+                <div class="circulo-estatistica">
+                    <img
+                        src="{{ url_for('static', filename='img/icon-1.png') }}"
+                        alt="Total de empréstimos">
+                </div>
+
+                <div class="info-estatistica">
+                    <h3>{{ total_emprestimos | default(0) }}</h3>
+                    <span>Total de empréstimos</span>
+                </div>
+
+            </div>
+
+            <!-- DEVOLVIDOS -->
+            <div class="card-estatistica">
+
+                <div class="circulo-estatistica">
+                    <img
+                        src="{{ url_for('static', filename='img/icon-5.png') }}"
+                        alt="Empréstimos devolvidos">
+                </div>
+
+                <div class="info-estatistica">
+                    <h3>{{ total_devolvidos | default(0) }}</h3>
+                    <span>Devolvidos</span>
+                </div>
+
+            </div>
+
+            <!-- EM ABERTO -->
+            <div class="card-estatistica">
+
+                <div class="circulo-estatistica">
+                    <img
+                        src="{{ url_for('static', filename='img/calendario (1).png') }}"
+                        alt="Empréstimos em aberto">
+                </div>
+
+                <div class="info-estatistica">
+                    <h3>{{ total_abertos | default(0) }}</h3>
+                    <span>Em aberto</span>
+                </div>
+
+            </div>
+
+            <!-- ATRASADOS -->
+            <div class="card-estatistica">
+
+                <div class="circulo-estatistica">
+                    <img
+                        src="{{ url_for('static', filename='img/relogio.png') }}"
+                        alt="Empréstimos atrasados">
+                </div>
+
+                <div class="info-estatistica">
+                    <h3>{{ total_atrasados | default(0) }}</h3>
+                    <span>Atrasados</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TABELA DO HISTÓRICO -->
+        <section class="tabela-historico">
+
+            <div class="tabela-header">
+
+                <div class="col-id">ID</div>
+                <div class="col-livro">Livro</div>
+                <div class="col-usuario">Usuário</div>
+                <div class="col-data">Data Empréstimo</div>
+                <div class="col-data">Data Prevista</div>
+                <div class="col-devolucao">Data Devolução</div>
+                <div class="col-status">Status</div>
+                <div class="col-acao"></div>
+
+            </div>
+
+            <div class="info_historico">
+
+                {% if emprestimos %}
+
+                    {% for emprestimo in emprestimos %}
+
+                        <div class="itens">
+
+                            <!-- ID -->
+                            <div class="col-id">
+                                <span class="id-tag">
+                                    {{ emprestimo.id }}
+                                </span>
+                            </div>
+
+                            <!-- LIVRO -->
+                            <div class="col-livro">
+
+                                <div class="livro-info">
+
+                                    <div class="icone-livro">
+                                        <img
+                                            src="{{ url_for('static', filename='img/icon-1.png') }}"
+                                            alt="Livro">
+                                    </div>
+
+                                    <p class="titulo-livro">
+                                        {{ emprestimo.livro.titulo }}
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- USUÁRIO -->
+                            <div class="col-usuario">
+                                <p class="nome-leitor">
+                                    {{ emprestimo.leitor.nome }}
+                                </p>
+                            </div>
+
+                            <!-- DATA DO EMPRÉSTIMO -->
+                            <div class="col-data">
+                                <p class="txt-data">
+                                    {{ emprestimo.data_emprestimo.strftime('%d/%m/%Y') if emprestimo.data_emprestimo else '-' }}
+                                </p>
+                            </div>
+
+                            <!-- DATA PREVISTA -->
+                            <div class="col-data">
+                                <p class="txt-data">
+                                    {{ emprestimo.data_prevista.strftime('%d/%m/%Y') if emprestimo.data_prevista else '-' }}
+                                </p>
+                            </div>
+
+                            <!-- DATA DA DEVOLUÇÃO -->
+                            <div class="col-devolucao">
+                                <p class="txt-data">
+                                    {{ emprestimo.data_devolucao.strftime('%d/%m/%Y') if emprestimo.data_devolucao else '-' }}
+                                </p>
+                            </div>
+
+                            <!-- STATUS -->
+                            <div class="col-status">
+
+                                {% if emprestimo.status == 'Devolvido' %}
+
+                                    <span class="status-tag devolvido">
+                                        Devolvido
+                                    </span>
+
+                                {% elif emprestimo.status == 'Atrasado' %}
+
+                                    <span class="status-tag atrasado">
+                                        Atrasado
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="status-tag aberto">
+                                        Em aberto
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+                            <!-- AÇÃO -->
+                            <div class="col-acao">
+
+                                <a
+                                    href="{{ url_for('historico_emprestio') }}"
+                                    class="btn-detalhes"
+                                    title="Ver histórico"
+                                    aria-label="Ver histórico do empréstimo">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="sem-registros">
+                        <i class="bi bi-journal-x"></i>
+                        <p>Nenhum empréstimo encontrado.</p>
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <!-- TOTAL DE REGISTROS -->
+            <div class="total-registros">
+                {{ emprestimos | length }} registro(s) encontrado(s)
+            </div>
+
+        </section>
+
+
+
+    </main>
 
 </body>
 </html>
