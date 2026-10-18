@@ -98,15 +98,15 @@ O projeto também contribui para o desenvolvimento de habilidades de resolução
 
 ### Tela inicial
 
-![Tela Inicial](docs/Tela%20inicial.png)
+![Tela Inicial](Docs/Tela%20inicial.png)
 
 ### Tela de empréstimos
 
-![Tela de empréstimos](docs/Tela%20emprestimos.png)
+![Tela de empréstimos](Docs/Tela%20emprestimos.png)
 
 ### Tela de histórico
 
-![Tela de histórico de empréstimos](docs/Tela%20hist%C3%B3rico.png)
+![Tela de histórico de empréstimos](Docs/Tela%20hist%C3%B3rico.png)
 ## Autora
 
 **Amanda Meireles**
