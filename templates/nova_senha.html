@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/recuperar_senha.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nova_senha.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <title>Redefinir senha - LibraTech</title>
 </head>
@@ -17,16 +20,19 @@
     <!-- BARRA SUPERIOR -->
     <header class="topo">
         <div class="Bib">
-            <img class="img_livro"
-                 src="{{ url_for('static', filename='img/livro.png') }}"
-                 alt="Logo LibraTech">
+            <img
+                class="img_livro"
+                src="{{ url_for('static', filename='img/livro.png') }}"
+                alt="Logo LibraTech"
+            >
+
             <h4 class="biblioteca">LibraTech</h4>
         </div>
-
     </header>
-      <!-- BOTÃO VOLTAR-->
+
+    <!-- BOTÃO VOLTAR -->
     <div class="area-voltar">
-        <a href="/login" class="botao-voltar2">
+        <a href="{{ url_for('login') }}" class="botao-voltar2">
             <button class="btn-voltar" type="button">
                 <i class="bi bi-arrow-left-square-fill"></i>
                 Voltar
@@ -34,56 +40,114 @@
         </a>
     </div>
 
-    <!-- CONTEÚDO PRINCIPAL  -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="container-recuperar">
+
         <div class="card-recuperar">
-            
-            <!-- ÍCONE DO LIVRO NO TOPO -->
+
+            <!-- ÍCONE DO LIVRO -->
             <div class="area-icone-livro">
-                <img class="img-livro-card" src="{{ url_for('static', filename='img/livro.png') }}" alt="Ícone Livro">
+                <img
+                    class="img-livro-card"
+                    src="{{ url_for('static', filename='img/livro.png') }}"
+                    alt="Ícone de livro"
+                >
             </div>
 
             <h3>Redefinir senha</h3>
-            <p class="subtitulo">Crie uma nova senha para acessar sua conta.</p>
 
-            <form method="POST" action="/nova_senha" class="form-recuperar">
+            <p class="subtitulo">
+                Crie uma nova senha para acessar sua conta.
+            </p>
 
-                <div class="campo-input">
+            <!-- FORMULÁRIO -->
+            <form
+                method="POST"
+                action="{{ url_for('nova_senha') }}"
+                class="form-recuperar"
+            >
+
+                <!-- NOVA SENHA -->
+                <div class="campo-input campo-senha-redefinicao">
+
                     <i class="bi bi-lock-fill icon-input"></i>
+
                     <input
                         type="password"
                         name="nova_senha"
+                        id="senha"
                         required
                         placeholder="Nova senha"
+                        autocomplete="new-password"
                     >
+
+                    <i
+                        class="bi bi-eye-slash olho-redefinicao"
+                        id="olhoNovaSenha"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Mostrar senha"
+                        title="Mostrar senha"
+                    ></i>
+
                 </div>
 
-                <div class="campo-input">
+                <!-- CONFIRMAR SENHA -->
+                <div class="campo-input campo-senha-redefinicao">
+
                     <i class="bi bi-lock-fill icon-input"></i>
+
                     <input
                         type="password"
                         name="confirmar_senha"
+                        id="confirmar_senha"
                         required
                         placeholder="Confirmar nova senha"
+                        autocomplete="new-password"
                     >
+
+                    <i
+                        class="bi bi-eye-slash olho-confirmacao"
+                        id="olhoConfirmacaoSenha"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Mostrar confirmação da senha"
+                        title="Mostrar senha"
+                    ></i>
+
                 </div>
 
+                <!-- ID DO USUÁRIO -->
                 <input
                     type="hidden"
                     name="usuario_id"
                     value="{{ usuario_id }}"
                 >
 
+                <!-- BOTÃO ALTERAR SENHA -->
                 <button type="submit" class="btn-continuar">
                     Alterar senha
                 </button>
 
             </form>
 
+            <!-- MENSAGEM DE ERRO -->
             {% if erro %}
                 <p class="erro">{{ erro }}</p>
             {% endif %}
 
+            <!-- MENSAGENS FLASH -->
+            {% with mensagens = get_flashed_messages(with_categories=true) %}
+                {% if mensagens %}
+                    {% for categoria, mensagem in mensagens %}
+                        <p class="{{ 'erro' if categoria == 'erro' else 'sucesso' }}">
+                            {{ mensagem }}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- LINK PARA LOGIN -->
             <div class="link-voltar-login">
                 <a href="{{ url_for('login') }}">
                     Voltar para o login
@@ -91,8 +155,51 @@
             </div>
 
         </div>
+
     </main>
 
-</body>
+    <!-- SCRIPT DOS OLHINHOS EXCLUSIVO DESTA PÁGINA -->
+    <script>
+        function configurarOlhoRedefinicao(idOlho, idCampo) {
+            const olho = document.getElementById(idOlho);
+            const campo = document.getElementById(idCampo);
 
+            function alternarSenha() {
+                const mostrar = campo.type === 'password';
+
+                campo.type = mostrar ? 'text' : 'password';
+
+                olho.classList.toggle('bi-eye', mostrar);
+                olho.classList.toggle('bi-eye-slash', !mostrar);
+
+                olho.setAttribute(
+                    'aria-label',
+                    mostrar ? 'Ocultar senha' : 'Mostrar senha'
+                );
+
+                olho.setAttribute(
+                    'title',
+                    mostrar ? 'Ocultar senha' : 'Mostrar senha'
+                );
+            }
+
+            olho.addEventListener('click', alternarSenha);
+
+            olho.addEventListener('keydown', function(evento) {
+                if (evento.key === 'Enter' || evento.key === ' ') {
+                    evento.preventDefault();
+                    alternarSenha();
+                }
+            });
+        }
+
+        configurarOlhoRedefinicao('olhoNovaSenha', 'senha');
+
+        configurarOlhoRedefinicao(
+            'olhoConfirmacaoSenha',
+            'confirmar_senha'
+        );
+    </script>
+
+</body>
 </html>

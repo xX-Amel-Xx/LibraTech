@@ -10,17 +10,16 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR  -->
-    <div class="topo">
+      <!-- BARRA SUPERIOR -->
+    <header class="topo">
         <div class="Bib">
-            <i class="bi bi-book-half logo-icon"></i>
-            <h4 class="biblioteca">Biblioteca</h4>
+            <img class="img_livro"
+                 src="{{ url_for('static', filename='img/livro.png') }}"
+                 alt="Logo LibraTech">
+            <h4 class="biblioteca">LibraTech</h4>
         </div>
-        <div class="usuario-topo">
-            <i class="bi bi-person-fill"></i>
-            <span>Entrar</span>
-        </div>
-    </div>
+    </header>
+
 
     <!-- CONTAINER CENTRAL DE LOGIN -->
     <div class="container-login">

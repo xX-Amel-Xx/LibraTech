@@ -80,19 +80,9 @@
 }
 
 /* --- ILUSTRAÇÃO DO TOPO --- */
-.circulo-ilustracao {
-    width: 85px;
-    height: 85px;
-    background-color: #ebd2b9;
-    border-radius: 50%;
-    margin: 0 auto 15px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .imagem-login {
-    width: 45px;
+    width: 250px;
     height: auto;
 }
 

@@ -1,6 +1,7 @@
 from flask import Flask,url_for, session,flash,render_template, request, redirect
 from models import db, Livro, Leitor, Emprestimo, Categoria,Usuario
 from datetime import date, datetime, timedelta
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app=Flask(__name__)
 app.secret_key = 'chave_secreta' 
@@ -484,7 +485,7 @@ def login():
 
                 
                 # Criando Sessão do usuário
-                if usuario and usuario.senha== senha_digitada:
+                if usuario and check_password_hash(usuario.senha, senha_digitada):
                         session['id']=usuario.id
                         session['usuario_nome']=usuario.nome
                         print("SESSÃO CRIADA:",dict(session))
@@ -526,7 +527,7 @@ def recuperar_senha():
     return render_template('recuperar_senha.html')
 
 
-#==================ROTA NOVA SENHA=================================
+# =================-ROTA NOVA SENHA=================================
 @app.route("/nova_senha", methods=['GET', 'POST'])
 def nova_senha():
 
@@ -552,16 +553,16 @@ def nova_senha():
         print("USUÁRIO:", usuario)
 
         if usuario:
-            usuario.senha = nova_senha
+            # CORREÇÃO: Gerar o hash seguro da senha antes de salvar no banco
+            usuario.senha = generate_password_hash(nova_senha)
             db.session.commit()
 
-            print("SENHA ALTERADA!")
+            print("SENHA ALTERADA COM HASH!")
 
             flash("Senha alterada com sucesso!", "sucesso")
             return redirect(url_for("login"))
 
     return render_template("nova_senha.html")
-
 #==================ROTA TELA ERRO===================================
 @app.route("/deletar_emprestimo/<int:id>")
 def confirmar_exclusao(id):
@@ -603,11 +604,20 @@ def tela_cadastrar():
               flash("O telefone já possui cadastro","erro")
               return render_template("tela_cadastrar.html")
 
-    # Adicionando no banco de dados 
-        novo_usuario=Usuario(nome=nome,email=email,senha=senha,telefone=telefone)
+        # Protegendo a senha antes de salvar no banco
+        senha_hash = generate_password_hash(senha)
+
+        # Criando o novo usuário
+        novo_usuario = Usuario(
+            nome=nome,
+            email=email,
+            senha=senha_hash,
+            telefone=telefone
+        )
+
+        # Adicionando no banco de dados
         db.session.add(novo_usuario)
         db.session.commit()
-
         flash("Cadastro realizado com sucesso, faça seu login","susesso")
         return redirect(url_for("login"))
       return render_template("tela_cadastrar.html")

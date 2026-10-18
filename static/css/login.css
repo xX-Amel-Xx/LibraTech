@@ -2,19 +2,14 @@
    PÁGINA DE LOGIN (login.css)
    ================================= */
 
-/* --- BARRA SUPERIOR (NAVBAR) --- */
+/* --- BARRA SUPERIOR --- */
 .topo {
     background-color: #423224;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 40px;
-    width: 100%;
+    padding: 14px 35px;
     box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
 }
 
 .Bib {
@@ -23,9 +18,9 @@
     gap: 10px;
 }
 
-.logo-icon {
-    color: #f2e7dc;
-    font-size: 20px;
+.img_livro {
+    width: 24px;
+    height: auto;
 }
 
 .biblioteca {
@@ -41,8 +36,63 @@
     align-items: center;
     gap: 8px;
     color: #f2e7dc;
+    font-size: 14px;
+}
+
+.divisor-topo {
+    color: #8c7863;
+    margin: 0 4px;
+}
+
+.link-sair {
+    color: #f2e7dc;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+.link-sair:hover {
+    color: #dfc8ad;
+}
+
+
+/* =================================
+   BOTÃO VOLTAR
+   ================================= */
+
+.botao-voltar2 {
+    display: inline-block;
+    margin-left: 15%;
+    margin-top: 35px;
+    text-decoration: none;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #fcf5ea;
+
+    border: 1px solid #dfc8ad;
+    border-radius: 10px;
+
+    padding: 10px 18px;
+
+    color: #3e2e1e;
+
     font-family: Georgia, serif;
-    font-size: 0.95rem;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgb(220, 210, 198);
+
+    transition: 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #f5e4cf;
+    transform: translateY(-2px);
 }
 
 /* --- CONTAINER CENTRALIZADO --- */
